@@ -53,9 +53,9 @@ namespace FoodOnline.Controllers
                 return View();
             }
             string urlBase = Request.Url.GetLeftPart(UriPartial.Authority) + Url.Content("~");
-            ViewBag.Email = "\r\nAccess to Email to verify account: " + user.Email;
+            ViewBag.Email = "<div style=\"color:#fff\">\r\nAccess to Email to verify account: " + user.Email;
             SentMail("Mã xác minh tài khoản", user.Email, "duykhanh18102002@gmail.com", "ytlipmoseyimohec", "Xác minh nhanh bằng cách click vào link: " 
-                + urlBase + "Users/ConfirmEmailLink/" + ID + "?Captcha=" + user.Captcha + "</p>");
+                + urlBase + "Users/ConfirmEmailLink/" + ID + "?Captcha=" + user.Captcha + "</div>");
             return View();
         }
         [HttpGet]
