@@ -416,6 +416,8 @@
     <Content Include="Content\Home\js\scrollax.min.js" />
     <Content Include="Content\Home\js\wow.min.js" />
     <Content Include="Content\Home\style.css" />
+    <Content Include="Content\Login\style.css" />
+    <Content Include="Content\Login\style.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="FoodApplication.Context.tt">
@@ -608,9 +610,9 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\SignUp.cshtml" />
-    <Content Include="Views\Home\SignIn.cshtml" />
     <Content Include="Views\Users\ConfirmEmail.cshtml" />
     <Content Include="Views\Users\ConfirmEmailLink.cshtml" />
+    <Content Include="Views\Home\SignIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
