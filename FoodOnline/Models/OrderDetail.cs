@@ -7,21 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FoodOnline
+namespace FoodOnline.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Message
+    public partial class OrderDetail
     {
-        public int IdMessage { get; set; }
-        public int FromIdUser { get; set; }
-        public int ToIdUser { get; set; }
-        public string Content { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
-        public Nullable<bool> Send { get; set; }
+        public int IdOrder { get; set; }
+        public int IdProduct { get; set; }
+        public string NameProduct { get; set; }
+        public decimal Price { get; set; }
+        public string ImageProduct { get; set; }
+        public int Quantity { get; set; }
     
-        public virtual User User { get; set; }
-        public virtual User User1 { get; set; }
+        public virtual Order Order { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

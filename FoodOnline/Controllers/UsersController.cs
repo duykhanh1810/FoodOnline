@@ -1,11 +1,15 @@
-﻿using System;
+﻿using FoodOnline.Models;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace FoodOnline.Controllers
@@ -36,6 +40,7 @@ namespace FoodOnline.Controllers
             mail.Subject = title;
             mail.Body = content;
             mail.IsBodyHtml= true;
+
             SmtpClient smtp = new SmtpClient();
             smtp.Host="smtp.gmail.com";
             smtp.Port = 587;
@@ -71,6 +76,23 @@ namespace FoodOnline.Controllers
             ViewBag.Message = "\r\nAccount Verification Failed";
             return View();
         }
+
+        [HttpGet]
+        public ActionResult ConfirmForgotPassword(int ID)
+        {
+            User user = db.Users.SingleOrDefault(u => u.IdUser == ID);
+            if (user.IsComfirm.Value)
+            {
+                ViewBag.Message = "Email Confirmed";
+                return View();
+            }
+            string urlBase = Request.Url.GetLeftPart(UriPartial.Authority) + Url.Content("~");
+            ViewBag.Email = "<div style=\"color:#fff\">\r\nAccess to Email to verify account: " + user.Email;
+            SentMail("Mã xác minh tài khoản", user.Email, "duykhanh18102002@gmail.com", "ytlipmoseyimohec","Mật khẩu của bạn là: "+GetMD5(user.Password)+ "Đăng nhập lại bằng cách click vào link: "
+                + urlBase + "Home/SignIn/" + ID + "?Captcha=" + user.Captcha + "</div>");
+            return View();
+        }
+
         public static string GetMD5(string str)
         {
             MD5 md5 = new MD5CryptoServiceProvider();

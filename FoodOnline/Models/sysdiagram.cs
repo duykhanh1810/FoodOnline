@@ -7,20 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FoodOnline
+namespace FoodOnline.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Comment
+    public partial class sysdiagram
     {
-        public int IdComment { get; set; }
-        public int IdUser { get; set; }
-        public string Text { get; set; }
-        public int IdProduct { get; set; }
-        public Nullable<bool> IsDelete { get; set; }
-    
-        public virtual Product Product { get; set; }
-        public virtual User User { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

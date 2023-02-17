@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FoodOnline
+namespace FoodOnline.Models
 {
     using System;
     using System.Data.Entity;

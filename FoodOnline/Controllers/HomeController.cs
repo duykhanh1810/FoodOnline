@@ -5,6 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.Security.Cryptography;
 using System.Text;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Net.Mail;
+using System.Net;
+using FoodOnline.Models;
 
 namespace FoodOnline.Controllers
 {
@@ -79,6 +84,19 @@ namespace FoodOnline.Controllers
             Session.Remove("User");
             return RedirectToAction("Index", "Home");
         }
+
+        [HttpPost]
+        public ActionResult ForgotPassword(User user)
+        {
+            User check = db.Users.SingleOrDefault(u => u.Email == user.Email);
+            if (check == null)
+            {
+                ViewBag.Message = "Email does not exists";
+                return View();
+            }
+                return RedirectToAction("ConfirmForgotPassword", "Users", new { ID = user.IdUser });
+        }
+
         public static string GetMD5(string str)
         {
             MD5 md5 = new MD5CryptoServiceProvider();
