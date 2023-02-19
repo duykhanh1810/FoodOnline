@@ -85,16 +85,33 @@ namespace FoodOnline.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult ForgotPassword(User user)
         {
             User check = db.Users.SingleOrDefault(u => u.Email == user.Email);
             if (check == null)
             {
-                ViewBag.Message = "Email does not exists";
+                ViewBag.Message = "Email does not exist";
                 return View();
             }
-                return RedirectToAction("ConfirmForgotPassword", "Users", new { ID = user.IdUser });
+            User userAdd = db.Users.Find(user.Email);
+            try
+            {
+                user.fg_otp = new Random().Next(100000, 999999).ToString();
+                userAdd = db.Users.Add(user);
+                db.SaveChanges();
+            }catch(Exception ex)
+            {
+                ViewBag.Message = "Failed to send email " + ex.Message;
+                return View();
+            }
+            return RedirectToAction("ConfirmForgotPassword", "Users", new { ID = user.IdUser });
+
         }
 
         public static string GetMD5(string str)

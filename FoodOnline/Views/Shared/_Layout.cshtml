@@ -118,7 +118,7 @@
                                 <ul class="dropdown-hm">
                                     <li class="nav-link scrollto fz">Hello @user.NameUser</li>
                                     <li class="dropdown-content-hm">
-                                        <a href="#">Info</a>
+                                        <a href="@Url.Action("ProfileUser", "Users", new {userID = user.IdUser})">Info</a>
                                         <a href="/Home/SignOut">SignOut</a>
                                     </li>
                                 </ul>

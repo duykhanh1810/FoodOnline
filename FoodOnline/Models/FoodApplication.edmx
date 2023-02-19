@@ -99,16 +99,17 @@ warning 6002: The table/view 'FoodOrdersOnline.dbo.OrderDetails' does not have a
             <PropertyRef Name="IdUser" />
           </Key>
           <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameUser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IdRole" Type="int" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="Captcha" Type="varchar" MaxLength="50" />
           <Property Name="IsComfirm" Type="bit" />
-          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="Phone" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="Img" Type="nvarchar" MaxLength="150" />
           <Property Name="Password" Type="varchar" MaxLength="70" Nullable="false" />
           <Property Name="Status" Type="bit" />
+          <Property Name="fg_otp" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_FromIdUserMessage">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
@@ -366,16 +367,17 @@ warning 6002: The table/view 'FoodOrdersOnline.dbo.OrderDetails' does not have a
             <PropertyRef Name="IdUser" />
           </Key>
           <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IdRole" Type="Int32" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Captcha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsComfirm" Type="Boolean" />
-          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Img" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Status" Type="Boolean" />
+          <Property Name="fg_otp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_IdUserComment" FromRole="Users" ToRole="Comments" />
           <NavigationProperty Name="Messages" Relationship="Self.FK_FromIdUserMessage" FromRole="Users" ToRole="Message" />
           <NavigationProperty Name="Messages1" Relationship="Self.FK_ToIdUserMessage" FromRole="Users" ToRole="Message" />
@@ -653,6 +655,7 @@ warning 6002: The table/view 'FoodOrdersOnline.dbo.OrderDetails' does not have a
                 <ScalarProperty Name="Img" ColumnName="Img" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="fg_otp" ColumnName="fg_otp" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
