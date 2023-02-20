@@ -3,26 +3,36 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Dashboard | Simple - Responsive Bootstrap 4 Admin Dashboard</title>
+    <title>Lotte Food - Food Order Online</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Responsive bootstrap 4 admin template" name="description">
     <meta content="Coderthemes" name="author">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="~/Areas/Admin/Content/assets/images/icon/chef-author.png">
+    <link rel="shortcut icon" href="~/Areas/Content/assets/images/icon/pizza3.png">
     <!-- App css -->
-    <link href="~/Areas/Admin/Content/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
-    <link href="~/Areas/Admin/Content/assets/css/icons.min.css" rel="stylesheet" type="text/css">
-    <link href="~/Areas/Admin/Content/assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <link href="~/Areas/Admin/Content/assets/css/css.css" rel="stylesheet" type="text/css" />
-    <link href="~/Areas/Admin/Content/assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
-    <link href="~/Areas/Admin/Content/assets/libs/datatables/buttons.bootstrap4.css" rel="stylesheet" type="text/css">
-    <link href="~/Areas/Admin/Content/assets/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css">
-    <link href="~/Areas/Admin/Content/assets/libs/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css">
-    <link href="~/Areas/Admin/Content/PagedList.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/Content/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
+    <link href="~/Areas/Content/assets/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/Content/assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet">
+    <link href="~/Areas/Content/assets/css/css.css" rel="stylesheet" type="text/css" />
+    <link href="~/Areas/Content/assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/Content/assets/libs/datatables/buttons.bootstrap4.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/Content/assets/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/Content/assets/libs/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css">
+
+    <link href="~/Areas/Content/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+    <link href="~/Areas/Content/assets/libs/switchery/switchery.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/Content/assets/libs/select2/select2.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/Content/assets/libs/bootstrap-datepicker/bootstrap-datepicker.css" rel="stylesheet">
+    <link href="~/Areas/Content/assets/libs/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/ad3e7aec43.js" crossorigin="anonymous"></script>
-    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">-->
+    <!-- Summernote css -->
+    <link href="~/Areas/Content/assets/libs/summernote/summernote-bs4.css" rel="stylesheet" type="text/css">
+    <!-- App css -->
+    <link href="~/Areas/Content/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
+    <link href="~/Areas/Content/assets/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/Content/assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet">
 
 </head>
 
@@ -38,27 +48,27 @@
 
                 <li class="dropdown d-none d-lg-block">
                     <a class="nav-link dropdown-toggle mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <img src="~/Areas/Admin/Content/assets/images/flags/us.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">English <i class="mdi mdi-chevron-down"></i> </span>
+                        <img src="~/Areas/Content/assets/images/flags/us.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">English <i class="mdi mdi-chevron-down"></i> </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <!--item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <img src="~/Areas/Admin/Content/assets/images/flags/spain.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Spanish</span>
+                            <img src="~/Areas/Content/assets/images/flags/spain.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Spanish</span>
                         </a>
 
                         <!--item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <img src="~/Areas/Admin/Content/assets/images/flags/italy.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Italian</span>
+                            <img src="~/Areas/Content/assets/images/flags/italy.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Italian</span>
                         </a>
 
                         <!--item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <img src="~/Areas/Admin/Content/assets/images/flags/french.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">French</span>
+                            <img src="~/Areas/Content/assets/images/flags/french.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">French</span>
                         </a>
 
                         <!--item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <img src="~/Areas/Admin/Content/assets/images/flags/russia.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Russian</span>
+                            <img src="~/Areas/Content/assets/images/flags/russia.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Russian</span>
                         </a>
                     </div>
                 </li>
@@ -130,9 +140,9 @@
 
                 <li class="dropdown notification-list">
                     <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <img src="~/Areas/Admin/Content/assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                        <img src="~/Areas/Content/assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
                         <span class="pro-user-name ml-1">
-                            @*@Session["FullName"].ToString()*@  <i class="mdi mdi-chevron-down"></i>
+                            @*@Session["FullName"].ToString()*@ <i class="mdi mdi-chevron-down"></i>
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -182,27 +192,27 @@
             <!-- LOGO -->
             <div class="logo-box">
                 <a href="index.html" class="logo text-center logo-dark">
-                    <span class="logo-lg">
-                        <img src="~/Areas/Admin/Content/assets/images/icon/chef-author.png" alt="" height="38">
+                    <span class="logo-lg" style="width: 239px; margin-left: 1px;">
+                        <img src="~/Areas/Content/assets/images/icon/pizza3.png" alt="" height="38">
                         <!--<span style="height: 60px;">JamesCooking</span>-->
-                        <span class="logo-lg-text-dark">James Cooking</span>
+                        <span class="logo-lg-text-dark" height="38">Lotte Food</span>
                     </span>
 
                     <span class="logo-sm">
                         <!-- <span class="logo-lg-text-dark">S</span> -->
-                        <img src="~/Areas/Admin/Content/assets/images/icon/jamecooking.png" alt="" height="38">
+                        @*<img src="~/Areas/Content/assets/images/icon/jamecooking.png" alt="" height="38">*@
                         @*<span class="logo-lg-text-light"">JamesCooking</span>*@
                     </span>
                 </a>
 
                 <a href="index.html" class="logo text-center logo-light">
                     <span class="logo-lg">
-                        <img src="~/Areas/Admin/Content/assets/images/icon/chef-author.png" alt="" height="26">
+                        <img src="~/Areas/Content/assets/images/icon/chef-author.png" alt="" height="26">
                         <span class="logo-lg-text-light">JamesCooking</span>
                     </span>
                     <span class="logo-sm">
                         <span class="logo-lg-text-light">JamesCooking</span>
-                        <img src="~/Areas/Admin/Content/assets/images/icon/chef-author.png" alt="" height="22">
+                        <img src="~/Areas/Content/assets/images/icon/chef-author.png" alt="" height="22">
                     </span>
                 </a>
             </div>
@@ -218,7 +228,7 @@
 
             <div class="user-box">
                 <div class="float-left">
-                    <img src="~/Areas/Admin/Content/assets/images/users/avatar-1.jpg" alt="" class="avatar-md rounded-circle">
+                    <img src="~/Areas/Content/assets/images/users/avatar-1.jpg" alt="" class="avatar-md rounded-circle">
                 </div>
                 <div class="user-info">
                     <a href="#">Stanley Jones</a>
@@ -236,35 +246,34 @@
                     <li>
                         <a href="@Url.Action("Index", "HomeAdmin")">
                             <!--<i class="ti-home"></i>-->
-                            <img src="~/Areas/Admin/Content/assets/images/icon/home_white.png" height="27">
+                            <img src="~/Areas/Content/assets/images/icon/home_white.png" height="27">
                             <span> Home </span>
                         </a>
                     </li>
 
                     <li>
                         <a href="@Url.Action("Index", "CookingRecipes")">
-                            <img src="~/Areas/Admin/Content/assets/images/icon/recipe-book-white.png" height="30">
+                            <img src="~/Areas/Content/assets/images/icon/food-product.png" height="30">
 
-                            <span> Recipe Management </span>
-                            <!--<span class="badge badge-primary float-right">11</span>-->
+                            <span> Food Management </span>
                         </a>
                     </li>
 
                     <li>
                         <a href="javascript: void(0);">
-                            <img src="~/Areas/Admin/Content/assets/images/icon/detailevent.png" height="27">
-                            <span>  Event Management  </span>
+                            <img src="~/Areas/Content/assets/images/icon/order.png" height="37">
+                            <span>  Order Management  </span>
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
                             <li>
                                 <a href="@Url.Action("Index", "Events")">
-                                    <img src="~/Areas/Admin/Content/assets/images/icon/calendar.png" height="27">
+                                    <img src="~/Areas/Content/assets/images/icon/calendar.png" height="27">
                                     <span> Event </span>
-                                    <!--<span class="menu-arrow"></span>-->
+                                    <span class="menu-arrow"></span>
                                 </a>
                                 <a href="@Url.Action("Index", "DetailsEvents")">
-                                    <img src="~/Areas/Admin/Content/assets/images/icon/winner-white.png" height="27">
+                                    <img src="~/Areas/Content/assets/images/icon/winner-white.png" height="27">
                                     <span>Details Event</span>
                                 </a>
                             </li>
@@ -273,20 +282,20 @@
 
                     <li>
                         <a href="javascript: void(0);">
-                            <img src="~/Areas/Admin/Content/assets/images/icon/skills-white.png" height="27">
+                            <img src="~/Areas/Content/assets/images/icon/skills-white.png" height="27">
                             <span>  Account Management & Authorization  </span>
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
                             <li>
                                 <a href="@Url.Action("Index", "Users")">
-                                    <img src="~/Areas/Admin/Content/assets/images/icon/id-card-white.png" height="25">
+                                    <img src="~/Areas/Content/assets/images/icon/id-card-white.png" height="25">
                                     <span> Employee Manager </span>
                                 </a>
                             </li>
                             <li>
                                 <a href="@Url.Action("Index1", "Users")">
-                                    <img src="~/Areas/Admin/Content/assets/images/icon/customer-white.png" height="23">
+                                    <img src="~/Areas/Content/assets/images/icon/customer-white.png" height="23">
                                     <span> Customer Management </span>
                                 </a>
                             </li>
@@ -295,32 +304,32 @@
 
                     <li>
                         <a href="javascript: void(0);">
-                            <img src="~/Areas/Admin/Content/assets/images/icon/dots-menu-white.png" height="27">
+                            <img src="~/Areas/Content/assets/images/icon/dots-menu-white.png" height="27">
                             <span>  Menu </span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
                             <li>
                                 <a href="@Url.Action("Index", "Tips")">
-                                    <img src="~/Areas/Admin/Content/assets/images/icon/idea.png" height="25">
-                                    <span>Tips</span>
+                                    <img src="~/Areas/Content/assets/images/icon/messenger.png" height="25">
+                                    <span>Messenger Management</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="tables-advanced.html">
-                                    <img src="~/Areas/Admin/Content/assets/images/icon/credit-card-white.png" height="23">
+                                    <img src="~/Areas/Content/assets/images/icon/credit-card-white.png" height="23">
                                     <span>Pay Management</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="tables-basic.html">
-                                    <img src="~/Areas/Admin/Content/assets/images/icon/notification1-white.png" height="23">
+                                    <img src="~/Areas/Content/assets/images/icon/notification1-white.png" height="23">
                                     <span>Notification Management</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="tables-basic.html">
-                                    <img src="~/Areas/Admin/Content/assets/images/icon/comment5.png" height="30">
-                                    <span>Comment Manager</span>
+                                    <img src="~/Areas/Content/assets/images/icon/comment5.png" height="30">
+                                    <span>Comment Management</span>
                                 </a>
 
                         </ul>
@@ -339,7 +348,7 @@
 
                     <li>
                         <a href="@Url.Action("TrangChu", "Home")">
-                            <img src="~/Areas/Admin/Content/assets/images/icon/log-out.png" height="30">
+                            <img src="~/Areas/Content/assets/images/icon/log-out.png" height="30">
                             <span>Exit</span>
                         </a>
                     </li>
@@ -419,7 +428,7 @@
                     <strong>Customize </strong> the overall color scheme, layout, etc.
                 </div>
                 <div class="mb-2">
-                    <img src="~/Areas/Admin/Content/assets/images/layouts/light.png" class="img-fluid img-thumbnail" alt="">
+                    <img src="~/Areas/Content/assets/images/layouts/light.png" class="img-fluid img-thumbnail" alt="">
                 </div>
                 <div class="custom-control custom-switch mb-3">
                     <input type="checkbox" class="custom-control-input theme-choice" id="light-mode-switch" checked="">
@@ -427,7 +436,7 @@
                 </div>
 
                 <div class="mb-2">
-                    <img src="~/Areas/Admin/Content/assets/images/layouts/dark.png" class="img-fluid img-thumbnail" alt="">
+                    <img src="~/Areas/Content/assets/images/layouts/dark.png" class="img-fluid img-thumbnail" alt="">
                 </div>
                 <div class="custom-control custom-switch mb-3">
                     <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch" data-bsstyle="~\Content\Admin\assets/css/bootstrap-dark.min.css" data-appstyle="~\Content\Admin\assets/css/app-dark.min.css">
@@ -435,7 +444,7 @@
                 </div>
 
                 <div class="mb-2">
-                    <img src="~/Areas/Admin/Content/assets/images/layouts/dark.png" class="img-fluid img-thumbnail" alt="">
+                    <img src="~/Areas/Content/assets/images/layouts/dark.png" class="img-fluid img-thumbnail" alt="">
                 </div>
                 <div class="custom-control custom-switch mb-5">
                     <input type="checkbox" class="custom-control-input theme-choice" id="rtl-mode-switch" data-appstyle="~\Content\Admin\assets/css/app-rtl.min.css">
@@ -455,41 +464,52 @@
     </a>
 
     <!-- Vendor js -->
-    <script src="~/Areas/Admin/Content/assets/js/vendor.min.js"></script>
+    <script src="~/Areas/Content/assets/js/vendor.min.js"></script>
 
-    <script src="~/Areas/Admin/Content/assets/libs/morris-js\morris.min.js"></script>
-    <script src="~/Areas/Admin/Content/assets/libs/raphael/raphael.min.js"></script>
+    <script src="~/Areas/Content/assets/libs/morris-js/morris.min.js"></script>
+    <script src="~/Areas/Content/assets/libs/raphael/raphael.min.js"></script>
 
-    <script src="~/Areas/Admin/Content/assets/js/pages/dashboard.init.js"></script>
+    <script src="~/Areas/Content/assets/js/pages/dashboard.init.js"></script>
 
     <!-- App js -->
-    <script src="~/Areas/Admin/Content/assets/js/app.min.js"></script>
+    <script src="~/Areas/Content/assets/js/app.min.js"></script>
 
 
     <!-- Vendor js -->
-    <script src="~/Areas/Admin/Content/assets/js\vendor.min.js"></script>
+    <script src="~/Areas/Content/assets/js/vendor.min.js"></script>
 
     <!-- Required datatable js -->
-    <script src="~/Areas/Admin/Content/assets/libs/datatables/jquery.dataTables.min.js"></script>
-    <script src="~/Areas/Admin/Content/assets/libs/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Areas/Content/assets/libs/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/Content/assets/libs/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Buttons examples -->
-    <script src="~/Areas/Admin/Content/assets/libs/datatables/dataTables.buttons.min.js"></script>
-    <script src="~/Areas/Admin/Content/assets/libs/datatables/buttons.bootstrap4.min.js"></script>
-    <script src="~/Areas/Admin/Content/assets/libs/datatables/dataTables.keyTable.min.js"></script>
-    <script src="~/Areas/Admin/Content/assets/libs/datatables/dataTables.select.min.js"></script>
-    <script src="~/Areas/Admin/Content/assets/libs/jszip/jszip.min.js"></script>
-    <script src="~/Areas/Admin/Content/assets/libs/pdfmake/pdfmake.min.js"></script>
-    <script src="~/Areas/Admin/Content/assets/libs/pdfmake/vfs_fonts.js"></script>
-    <script src="~/Areas/Admin/Content/assets/libs/datatables/buttons.html5.min.js"></script>
-    <script src="~/Areas/Admin/Content/assets/libs/datatables/buttons.print.min.js"></script>
+    <script src="~/Areas/Content/assets/libs/datatables/dataTables.buttons.min.js"></script>
+    <script src="~/Areas/Content/assets/libs/datatables/buttons.bootstrap4.min.js"></script>
+    <script src="~/Areas/Content/assets/libs/datatables/dataTables.keyTable.min.js"></script>
+    <script src="~/Areas/Content/assets/libs/datatables/dataTables.select.min.js"></script>
+    <script src="~/Areas/Content/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/Areas/Content/assets/libs/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="~/Areas/Content/assets/libs/jszip/jszip.min.js"></script>
+    <script src="~/Areas/Content/assets/libs/pdfmake/pdfmake.min.js"></script>
+    <script src="~/Areas/Content/assets/libs/pdfmake/vfs_fonts.js"></script>
+    <script src="~/Areas/Content/assets/libs/datatables/buttons.html5.min.js"></script>
+    <script src="~/Areas/Content/assets/libs/datatables/buttons.print.min.js"></script>
 
     <!-- Responsive examples -->
-    <script src="~/Areas/Admin/Content/assets/libs/datatables/dataTables.responsive.min.js"></script>
-    <script src="~/Areas/Admin/Content/assets/libs/datatables/responsive.bootstrap4.min.js"></script>
+    <script src="~/Areas/Content/assets/libs/datatables/dataTables.responsive.min.js"></script>
+    <script src="~/Areas/Content/assets/libs/datatables/responsive.bootstrap4.min.js"></script>
 
     <!-- Datatables init -->
-    <script src="~/Areas/Admin/Content/assets/js/pages/datatables.init.js"></script>
+    <script src="~/Areas/Content/assets/js/pages/datatables.init.js"></script>
+
+    <!-- Summernote js -->
+    <script src="~/Areas/Content/assets/libs/summernote/summernote-bs4.min.js"></script>
+
+    <!-- Init js-->
+    <script src="~/Areas/Content/assets/js/pages/form-advanced.init.js"></script>
+
+    <!-- App js -->
+    <script src="~/Areas/Content/assets/js/app.min.js"></script>
 
     @RenderSection("scripts", required: false)
 </body>
