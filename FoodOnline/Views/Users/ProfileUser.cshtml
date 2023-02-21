@@ -54,13 +54,13 @@
                             {
                                 @Html.HiddenFor(model => model.IdUser)
                                 <div style="margin-bottom: 25px;">
-                                    <h3 class="mgbt-xs-15">Profile Setting</h3>
+                                    <h3 class="mgbt-xs-15" style="color:white">Profile Setting</h3>
                                     <div class="form-group row" style="margin-top: 15px; height: 40px;">
                                         <div class="col-sm-3" style=" text-align: right; ">
-                                            <label style="padding-top: 4px; margin-bottom: 0;font-weight: 500; margin: 5px; color: black;">Full Name</label>
+                                            <label style="padding-top: 4px; margin-bottom: 0;font-weight: 500; margin: 5px; color: white;">Full Name</label>
                                         </div>
                                         <div class="col-sm-9">
-                                            @Html.EditorFor(model => model.NameUser, new { htmlAttributes = new { style = "width: 100%; height: 35px;", @class = "form-control" } })
+                                            @Html.EditorFor(model => model.NameUser, new { htmlAttributes = new { style = "width: 100%; height: 35px;color:white;", @class = "form-control" } })
                                         </div>
                                     </div>
                                     @*<div class="form-group row" style="margin-top: 15px; height: 40px;">
@@ -73,21 +73,21 @@
                                     </div>*@
                                     <div class="form-group row" style="margin-top: 15px; height: 40px;">
                                         <div class="col-sm-3" style=" text-align: right; ">
-                                            <label style="padding-top: 4px; margin-bottom: 0; font-weight: 500; margin: 5px; color: black;">
+                                            <label style="padding-top: 4px; margin-bottom: 0; font-weight: 500; margin: 5px; color: white;">
                                                 Phone
                                                 Number
                                             </label>
                                         </div>
                                         <div class="col-sm-9">
-                                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { style = "width: 100%; height: 35px;", @class = "form-control" } })
+                                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { style = "width: 100%; height: 35px; color:white;", @class = "form-control" } })
                                         </div>
                                     </div>
                                     <div class="form-group row" style="margin-top: 15px; height: 40px;">
                                         <div class="col-sm-3" style=" text-align: right; ">
-                                            <label style="padding-top: 4px; margin-bottom: 0;font-weight: 500; margin: 5px; color: black;">Address</label>
+                                            <label style="padding-top: 4px; margin-bottom: 0;font-weight: 500; margin: 5px; color: white;">Address</label>
                                         </div>
                                         <div class="col-sm-9">
-                                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { style = "width: 100%; height: 35px;", @class = "form-control" } })
+                                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { style = "width: 100%; height: 35px; color:white;", @class = "form-control" } })
                                         </div>
                                     </div>
                                     @*<div class="form-group row" style="margin-top: 15px; height: 40px;">
@@ -105,25 +105,25 @@
                                 <hr />
                                 <!--Profile settign Begin-->
                                 <div style="margin-bottom: 25px;">
-                                    <h3 class="mgbt-xs-15">Password setting</h3>
+                                    <h3 class="mgbt-xs-15" style="color:white">Password setting</h3>
 
                                     <div class="form-group row" style="margin-top: 15px; height: 40px;">
                                         <div class="col-sm-3" style=" text-align: right; ">
-                                            <label style="padding-top: 4px; margin-bottom: 0; font-weight: 500; margin: 5px; color: black;">Password</label>
+                                            <label style="padding-top: 4px; margin-bottom: 0; font-weight: 500; margin: 5px; color: white;">Password</label>
                                         </div>
                                         <div class="col-sm-9">
                                             @*<input type="password" name="Password" class="form-control" placeholder="Current Password">*@
-                                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { style = "width: 100%; height: 35px;", @class = "form-control", @type = "password" } })
+                                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { style = "width: 100%; height: 35px; color:white;", @class = "form-control", @type = "password" } })
                                         </div>
                                     </div>
                                     <div class="form-group row" style="margin-top: 15px; height: 40px;">
                                         <div class="col-sm-3" style=" text-align: right; ">
-                                            <label style="padding-top: 4px; margin-bottom: 0; font-weight: 500; margin: 5px; color: black;">
-                                                ConfirmPass
+                                            <label style="padding-top: 4px; margin-bottom: 0; font-weight: 500; margin: 5px; color: white;">
+                                                NewPassword
                                             </label>
                                         </div>
                                         <div class="col-sm-9">
-                                            <input name="txtRepassword" type="password" placeholder="Repassword..." style="width: 100%; height: 35px; color: black;" value="" class="form-control">
+                                            <input name="txtRepassword" type="password" placeholder="Repassword..." style="width: 100%; height: 35px; color: white;" value="" class="form-control">
                                         </div>
                                     </div>
                                     <div style="margin-top: 15px; width: 100%;">
