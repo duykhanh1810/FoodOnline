@@ -99,12 +99,12 @@ warning 6002: The table/view 'FoodOrdersOnline.dbo.OrderDetails' does not have a
             <PropertyRef Name="IdUser" />
           </Key>
           <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NameUser" Type="nvarchar" MaxLength="50" />
           <Property Name="IdRole" Type="int" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="Captcha" Type="varchar" MaxLength="50" />
           <Property Name="IsComfirm" Type="bit" />
-          <Property Name="Address" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
           <Property Name="Phone" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="Img" Type="nvarchar" MaxLength="150" />
           <Property Name="Password" Type="varchar" MaxLength="70" Nullable="false" />
@@ -367,12 +367,12 @@ warning 6002: The table/view 'FoodOrdersOnline.dbo.OrderDetails' does not have a
             <PropertyRef Name="IdUser" />
           </Key>
           <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IdRole" Type="Int32" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Captcha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsComfirm" Type="Boolean" />
-          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Img" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
