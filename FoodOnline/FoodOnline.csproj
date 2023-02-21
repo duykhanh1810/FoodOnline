@@ -178,52 +178,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
-    <Compile Include="Category.cs">
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Models\Category.cs">
-      <DependentUpon>FoodApplication.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Comment.cs">
-      <DependentUpon>FoodApplication.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FoodApplication.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FoodApplication.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FoodApplication.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FoodApplication.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FoodApplication.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FoodApplication.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Models\Message.cs">
-      <DependentUpon>FoodApplication.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Order.cs">
-      <DependentUpon>FoodApplication.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OrderDetail.cs">
-      <DependentUpon>FoodApplication.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Product.cs">
-      <DependentUpon>FoodApplication.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Role.cs">
-      <DependentUpon>FoodApplication.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>FoodApplication.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\User.cs">
-      <DependentUpon>FoodApplication.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -610,16 +567,6 @@
     <Content Include="Content\Login\style.js" />
     <Content Include="Images\Avatar_Null.png" />
     <Content Include="Images\pr.jpg" />
-    <Content Include="Models\FoodApplication.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FoodApplication.edmx</DependentUpon>
-      <LastGenOutput>FoodApplication.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\FoodApplication.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FoodApplication.edmx</DependentUpon>
-      <LastGenOutput>FoodApplication.cs</LastGenOutput>
-    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -747,15 +694,7 @@
     <Content Include="Content\Home\scss\bootstrap\utilities\_text.scss" />
     <Content Include="Content\Home\scss\bootstrap\utilities\_visibility.scss" />
     <Content Include="Content\Home\scss\bootstrap\vendor\_rfs.scss" />
-    <EntityDeploy Include="Models\FoodApplication.edmx">
     <Content Include="Areas\Admin\Views\web.config" />
-    <EntityDeploy Include="FoodApplication.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FoodApplication.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\FoodApplication.edmx.diagram">
-      <DependentUpon>FoodApplication.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Content\assets\css\s\hind\v11\5aU19_a8oxmIfJpbERySiA.ttf" />
     <Content Include="Areas\Admin\Content\assets\css\s\hind\v11\5aU19_a8oxmIfLZcERySiA.ttf" />
     <Content Include="Areas\Admin\Content\assets\css\s\notosans\v11\o-0IIpQlx3QUlC5A4PNr5TRF.ttf" />
