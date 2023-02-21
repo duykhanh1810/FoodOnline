@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body>
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="col-md-6"><img src="~/Imaget/z3899273256217_c5441def03febd3ab94ed9db6ce8de11.jpg" style="height:450px;width:450px;" /></div>
+                <div class="col-md-6">
+                    <div class="small mb-1">@Html.DisplayFor(model => model.Author)</div>
+                    <h1 class="display-5 fw-bolder">@Html.DisplayFor(model => model.Title)</h1>
+                    <div class="fs-5 mb-5">
+                        <span>@Html.DisplayFor(model => model.)$</span>
+                    </div>
+                    <p class="lead">@Html.DisplayFor(model => model.Description)</p>
+                    <div class="d-flex">
+                        <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                            <i class="bi-cart-fill me-1"></i>
+                            <a class="cart-add" href="/AddToCart?book_Id=@Model.Book_Id&quantity=1">Add To Cart</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="~/Content/Recipes/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/Recipes/js/custom.js"></script>
+    <script src="~/Content/Recipes/js/jquery.min.js"></script>
+</body>
+@*/Areas/Local/BookImages/@Url.Content(Model.Image)*@
+

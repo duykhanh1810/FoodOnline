@@ -1,0 +1,60 @@
+﻿@model IEnumerable<FoodOnline.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body>
+    <div class="container-xl">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Featured <b>Books</b></h2>
+
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+                    <div class="carousel-inner">
+                        <div class="item carousel-item active">
+                            <div class="row">
+                                @foreach (var item in Model)
+                                {
+                                    <div class="col-sm-3">
+                                        <div class="thumb-wrapper">
+                                            <div class="img-box">
+                                                <a href="~/Products/Details/@item.IdProduct">
+                                                    <figure>
+                                                        <img src="~/Imaget/z3899273256217_c5441def03febd3ab94ed9db6ce8de11.jpg" />
+                                                    </figure>
+                                                </a>
+                                            </div>
+                                            <div class="thumb-content">
+                                                <h4 style="color: white">@item.NameProduct</h4>
+                                                <p class="item-price"> <b>$@item.Price</b></p>
+                                            </div>
+                                        </div>
+                                    </div>}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, Page_No => Url.Action("Index", new { Page_No, Sort_Order = ViewBag.CurrentSort }))
+        <script src="~/Content/Recipes/js/bootstrap.bundle.min.js"></script>
+        <script src="~/Content/Recipes/js/custom.js"></script>
+        <script src="~/Content/Recipes/js/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#Formbeg").keypress(function (e) {
+                        keycode = e.keyCode || e.charCode || e.which
+                        if (keycode == 13) {
+                            $("#").click();
+                            return false;
+                        }
+                    });
+                });*@
+    </script>
+</body>
+
+
