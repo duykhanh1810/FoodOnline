@@ -59,7 +59,7 @@ namespace FoodOnline.Controllers
                 return View();
             }
             string urlBase = Request.Url.GetLeftPart(UriPartial.Authority) + Url.Content("~");
-            ViewBag.Email = "<div style=\"color:#fff\">\r\nAccess to Email to verify account: " + user.Email;
+            ViewBag.Email = "Access to Email to verify account: " + user.Email;
             SentMail("Mã xác minh tài khoản", user.Email, "duykhanh18102002@gmail.com", "ytlipmoseyimohec", "Xác minh nhanh bằng cách click vào link: " 
                 + urlBase + "Users/ConfirmEmailLink/" + ID + "?Captcha=" + user.Captcha + "</div>");
             return View();
@@ -137,36 +137,36 @@ namespace FoodOnline.Controllers
             updateUser.NameUser = user.NameUser;
             updateUser.Address = user.Address;
             updateUser.Phone = user.Phone;
-            db.SaveChanges();
-            var passHash = GetMD5(user.Password);
-            if (passHash == updateUser.Password)
-            {
-                if (form["txtRepassword"] == null || form["txtRepassword"] == "")
-                {
-                    ViewBag.Message = "Update success";
-                    return View(user);
-                }
-                else
-                {
-                    ViewBag.Message = "Do not input comfirm password if you do not change password";
-                    return View(user);
-                }
-            }
-            else
-            {
-                if (user.Password == form["txtRepassword"])
-                {
-                    updateUser.Password = GetMD5(user.Password);
-                    db.SaveChanges();
-                    ViewBag.Message = "Update success";
-                    return View(user);
-                }
-                else
-                {
-                    ViewBag.Message = "Password and Confirm Password are not match";
-                    return View(user);
-                }
-            }
+            db.SaveChanges(); return View(user);
+            //var passHash = GetMD5(user.Password);
+            //if (passHash == updateUser.Password)
+            //{
+            //    if (form["txtRepassword"] == null || form["txtRepassword"] == "")
+            //    {
+            //        ViewBag.Message = "Update success";
+            //        return View(user);
+            //    }
+            //    else
+            //    {
+            //        ViewBag.Message = "Do not input comfirm password if you do not change password";
+            //        return View(user);
+            //    }
+            //}
+            //else
+            //{
+            //    if (user.Password == form["txtRepassword"])
+            //    {
+            //        updateUser.Password = GetMD5(user.Password);
+            //        db.SaveChanges();
+            //        ViewBag.Message = "Update success";
+            //        return View(user);
+            //    }
+            //    else
+            //    {
+            //        ViewBag.Message = "Password and Confirm Password are not match";
+            //        return View(user);
+            //    }
+            //}
         }
 
         [HttpPost]
