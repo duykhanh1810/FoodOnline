@@ -66,6 +66,9 @@ namespace FoodOnline.Controllers
             User wrongPass = db.Users.SingleOrDefault(u => u.Email == email && u.Password != passHash);
             if (check!= null) {
                 Session["User"] = check;
+                Session["Roles"] = check.Role;
+                Session["User_Id"] = check.IdUser;
+                Session["Name"] = check.NameUser;
                 return RedirectToAction("Index", "Home");
             }
             else if(wrongEmail!= null)

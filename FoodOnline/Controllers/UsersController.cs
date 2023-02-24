@@ -134,9 +134,12 @@ namespace FoodOnline.Controllers
         {
             int userID = (int)user.IdUser;
             var updateUser = db.Users.SingleOrDefault(x => x.IdUser == userID);
+            var passHash = GetMD5(user.Password);
+            //var updatePass = GetMD5(updateUser.Password);
             updateUser.NameUser = user.NameUser;
             updateUser.Address = user.Address;
             updateUser.Phone = user.Phone;
+            updateUser.Password = passHash;
             db.SaveChanges(); return View(user);
             //var passHash = GetMD5(user.Password);
             //if (passHash == updateUser.Password)
@@ -196,6 +199,42 @@ namespace FoodOnline.Controllers
                 ViewBag.Message = "Upload Fail";
                 return RedirectToAction("ProfileUser", new { userID = IdUser });
             }
+        }
+
+        public ActionResult ChangePass()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePass(string Password, string newPassword, string Confirmpwd)
+        {
+            User objadmin = new User();
+            string ad = Session["Name"].ToString();
+            int id = int.Parse(Session["User_Id"].ToString());
+            var login = db.Users.Where(u => u.NameUser.Equals(ad) && u.IdUser.Equals(id)).FirstOrDefault();
+            var f_pass = GetMD5(Password);
+            if (login.Password == f_pass)
+            {
+                if (Confirmpwd == newPassword)
+                {
+                    //login.ConfirmPassword = GetMD5(Confirmpwd);
+                    login.Password = GetMD5(newPassword);
+                    var str = GetMD5(newPassword);
+                    db.SaveChanges();
+                    ViewBag.Message = "Password has been changed successfully !!!";
+                }
+                else
+                {
+                    ViewBag.Message = "New password match !!! Please check !!!";
+                }
+            }
+            else
+            {
+                ViewBag.Message = "Old password not match !!! Please check !!!";                
+            }
+            return View();
         }
 
         public static string GetMD5(string str)

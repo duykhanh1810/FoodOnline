@@ -645,6 +645,7 @@
     <Content Include="Views\Users\ConfirmForgotPassword.cshtml" />
     <Content Include="Views\Users\ResetPassword.cshtml" />
     <Content Include="Views\Users\ProfileUser.cshtml" />
+    <Content Include="Views\Users\ChangePass.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
