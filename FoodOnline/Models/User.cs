@@ -48,9 +48,8 @@ namespace FoodOnline.Models
         public virtual ICollection<Order> Orders { get; set; }
         public virtual Role Role { get; set; }
 
-        [NotMapped]
-        [Required]
-        [System.ComponentModel.DataAnnotations.Compare("Password")]
-        public string ConfirmPassword { get; set; }
+        //[NotMapped]
+        //[System.ComponentModel.DataAnnotations.Compare("Password")]
+        //public string ConfirmPassword { get; set; }
     }
 }

@@ -12,6 +12,7 @@ using System.Text;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace FoodOnline.Controllers
 {
@@ -50,6 +51,26 @@ namespace FoodOnline.Controllers
             smtp.EnableSsl = true;
             smtp.Send(mail);
         }
+
+        public void SentMailForgotPass(string title, string ToEmail, string FromEmail, string password, string content)
+        {
+            //string passHash = GetMD5(password);
+            MailMessage mail = new MailMessage();
+            mail.To.Add(ToEmail);
+            mail.From = new MailAddress(ToEmail);
+            mail.Subject = title;
+            mail.Body = content;
+            mail.IsBodyHtml = true;
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new NetworkCredential(FromEmail, password);
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
+        }
+
         [HttpGet]
         public ActionResult ConfirmEmail(int ID) {
             User user = db.Users.SingleOrDefault(u=>u.IdUser == ID);
@@ -82,15 +103,15 @@ namespace FoodOnline.Controllers
         public ActionResult ConfirmForgotPassword(int ID)
         {
             User user = db.Users.SingleOrDefault(u => u.IdUser == ID);
-            if (user.fg_otp.Length>0)
-            {
-                ViewBag.Message = "Email Confirmed";
-                return View();
-            }
+            //if (user.fg_otp.Length>0)
+            //{
+            //    ViewBag.Message = "Email Confirmed";
+            //    return View();
+            //}
             string urlBase = Request.Url.GetLeftPart(UriPartial.Authority) + Url.Content("~");
             ViewBag.Email = "<div style=\"color:#fff\">\r\nAccess to Email to verify account: " + user.Email;
-            SentMail("Mã xác minh tài khoản", user.Email, "duykhanh18102002@gmail.com", "ytlipmoseyimohec", "Reset password bằng cách click vào link: "
-                + urlBase + "Users/ResetPassword/?fg_otp=" + user.fg_otp + "&email="+user.Email+ "</div>");
+            SentMailForgotPass("Mã xác minh tài khoản", user.Email, "duykhanh18102002@gmail.com", "ytlipmoseyimohec", "Reset password bằng cách click vào link: "
+                + urlBase + "Users/ResetPassword/"+ID+"?fg_otp=" + user.fg_otp + "&email=" + user.Email + "</div>");
             return View();
         }
 
@@ -100,12 +121,12 @@ namespace FoodOnline.Controllers
         }
 
         [HttpPost]
-        public ActionResult ResetPassword(int ID, string fgOtp)
+        public ActionResult ResetPassword(int ID, string fgOtp, User user)
         {
-            User us = db.Users.SingleOrDefault(x=>x.IdUser== ID && x.fg_otp == fgOtp);
+            User us = db.Users.SingleOrDefault(x => x.IdUser == ID && x.fg_otp == fgOtp);
             if (us != null)
             {
-                us.Password = GetMD5(us.Password);
+                us.Password = GetMD5(user.Password);
                 db.SaveChanges();
                 ViewBag.Message = "Reset Password successful";
                 return View();
@@ -113,6 +134,7 @@ namespace FoodOnline.Controllers
             ViewBag.Message = "\r\nReset Password failed";
             return View();
         }
+
 
         [HttpGet]
         public ActionResult ProfileUser(int? userID)
@@ -134,14 +156,14 @@ namespace FoodOnline.Controllers
         {
             int userID = (int)user.IdUser;
             var updateUser = db.Users.SingleOrDefault(x => x.IdUser == userID);
-            var passHash = GetMD5(user.Password);
+            //var passHash = GetMD5(user.Password);
             //var updatePass = GetMD5(updateUser.Password);
             updateUser.NameUser = user.NameUser;
             updateUser.Address = user.Address;
             updateUser.Phone = user.Phone;
-            updateUser.Password = passHash;
-            db.SaveChanges(); return View(user);
-            //var passHash = GetMD5(user.Password);
+            //updateUser.Password = passHash;
+            db.SaveChanges();
+            return RedirectToAction("ProfileUser", new { userID = updateUser.IdUser });
             //if (passHash == updateUser.Password)
             //{
             //    if (form["txtRepassword"] == null || form["txtRepassword"] == "")
@@ -173,7 +195,7 @@ namespace FoodOnline.Controllers
         }
 
         [HttpPost]
-        public ActionResult UploadAvatar(HttpPostedFileBase file,int IdUser)
+        public ActionResult UploadAvatar(HttpPostedFileBase file, int IdUser)
         {
             int userID = (int)IdUser;
             try

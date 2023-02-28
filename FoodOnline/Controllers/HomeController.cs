@@ -10,6 +10,8 @@ using System.Data.SqlClient;
 using System.Net.Mail;
 using System.Net;
 using FoodOnline.Models;
+using System.Data.Entity.Migrations;
+using System.Data.Entity.Validation;
 
 namespace FoodOnline.Controllers
 {
@@ -64,11 +66,22 @@ namespace FoodOnline.Controllers
             User check = db.Users.SingleOrDefault(u => u.Email == email && u.Password == passHash);
             User wrongEmail = db.Users.SingleOrDefault(u => u.Email != email);
             User wrongPass = db.Users.SingleOrDefault(u => u.Email == email && u.Password != passHash);
+            //var check2 = from u in db.Users
+            //            join r in db.Roles on u.IdRole equals r.IdRole
+            //            where (u.Email == email && u.Password == passHash)
+            //            select new
+            //            {
+            //                EmailUser = u.Email,
+            //                IDUser = u.IdUser,
+            //                IDRole = u.IdRole,
+            //                Name = u.NameUser,
+            //                namerole = r.NameRole
+            //            };
             if (check!= null) {
-                Session["User"] = check;
-                Session["Roles"] = check.Role;
-                Session["User_Id"] = check.IdUser;
-                Session["Name"] = check.NameUser;
+                    Session["User"] = check;
+                    Session["Roles"] = check;
+                    Session["User_Id"] = check.IdUser;
+                    Session["Name"] = check.NameUser;                
                 return RedirectToAction("Index", "Home");
             }
             else if(wrongEmail!= null)
@@ -102,18 +115,31 @@ namespace FoodOnline.Controllers
                 ViewBag.Message = "Email does not exist";
                 return View();
             }
-            User userAdd = db.Users.Find(user.Email);
             try
             {
-                user.fg_otp = new Random().Next(100000, 999999).ToString();
-                userAdd = db.Users.Add(user);
+                check.fg_otp = new Random().Next(100000, 999999).ToString();
                 db.SaveChanges();
-            }catch(Exception ex)
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+            catch (Exception ex)
             {
                 ViewBag.Message = "Failed to send email " + ex.Message;
                 return View();
             }
-            return RedirectToAction("ConfirmForgotPassword", "Users", new { ID = user.IdUser });
+            return RedirectToAction("ConfirmForgotPassword", "Users", new { ID = check.IdUser });
 
         }
 

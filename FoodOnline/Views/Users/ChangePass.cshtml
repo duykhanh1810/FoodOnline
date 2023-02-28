@@ -10,37 +10,38 @@
 <div class="row justify-content-md-center">
     <div class="col-md-5">
         <h3 style="text-align:center">Welcome @Session["Name"]</h3>
-        <h3 style="text-align:center">Welcome @Session["Roles"]</h3>
+        <h3 style="text-align:center; color: white">Welcome @Session["Roles"]</h3>
 
         @using (Html.BeginForm("ChangePass", "Users", FormMethod.Post))
         {
             FoodOnline.Models.User user = Session["User"] as FoodOnline.Models.User;
             @Html.AntiForgeryToken()
-            <div class="card">
-                <div class="card-header">Change Password</div>
-                <div class="card-body">
-                    <div class="form-group pass_show">
-                        @Html.Label("Current Password", new { @for = "Password" })  <br />
-                        <input type="password" name="Password" class="form-control" placeholder="Current Password">
-                    </div>
-                    <div class="form-group pass_show">
-                        @Html.Label("New Password", new { @for = "newPassword" }) <br />
-                        <input type="password" name="newPassword" class="form-control" placeholder="New Password">
-                    </div>
-                    <div class="form-group pass_show">
-                        @Html.Label("Confirm Password", new { @for = "Confirmpwd" }) <br />
-                        <input type="password" name="Confirmpwd" class="form-control" placeholder="Confirm Password">
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-outline-dark" value="ChangePass" />
-                    </div>
-                    <div class="form-group">
-                        <a href="@Url.Action("ProfileUser", "Users", new {userID = user.IdUser })">Back to info</a>
-                    </div>
-                </div>
+    <div class="card">
+        <div class="card-header">Change Password</div>
+        @ViewBag.Message
+        <div class="card-body">
+            <div class="form-group pass_show">
+                @Html.Label("Current Password", new { @for = "Password" })  <br />
+                <input type="password" name="Password" class="form-control" placeholder="Current Password">
             </div>
+            <div class="form-group pass_show">
+                @Html.Label("New Password", new { @for = "newPassword" }) <br />
+                <input type="password" name="newPassword" class="form-control" placeholder="New Password">
+            </div>
+            <div class="form-group pass_show">
+                @Html.Label("Confirm Password", new { @for = "Confirmpwd" }) <br />
+                <input type="password" name="Confirmpwd" class="form-control" placeholder="Confirm Password">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-outline-dark" value="ChangePass" />
+            </div>
+            <div class="form-group">
+                <a href="@Url.Action("ProfileUser", "Users", new {userID = user.IdUser   })">Back to info</a>
+            </div>
+        </div>
+    </div>
         }
-    </div>@ViewBag.Message
+    </div>
 </div>
 <style>
     .card-header {

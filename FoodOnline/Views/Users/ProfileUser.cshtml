@@ -108,15 +108,15 @@
                                     <h3 class="mgbt-xs-15" style="color:white">Password setting</h3>
 
                                     <!--<div class="form-group row" style="margin-top: 15px; height: 40px;">
-                                    <div class="col-sm-3" style=" text-align: right; ">
-                                        <label style="padding-top: 4px; margin-bottom: 0; font-weight: 500; margin: 5px; color: white;">Password</label>
-                                    </div>
-                                    <div class="col-sm-9">-->
-                                        @*<input type="password" name="Password" class="form-control" placeholder="Current Password">*@
-                                    @*@Html.EditorFor(model => model.Password, new { htmlAttributes = new { style = "width: 100%; height: 35px; color:white;", @class = "form-control", @type = "password" } })*@
-                                    <!--</div>
-                                    </div>
-                                    <div class="form-group row" style="margin-top: 15px; height: 40px;">
+                                        <div class="col-sm-3" style=" text-align: right; ">
+                                            <label style="padding-top: 4px; margin-bottom: 0; font-weight: 500; margin: 5px; color: white;">Password</label>
+                                        </div>
+                                        <div class="col-sm-9">-->
+                                            @*<input type="password" name="Password" class="form-control" placeholder="Current Password">*@
+                                            @*@Html.EditorFor(model => model.Password, new { htmlAttributes = new { style = "width: 100%; height: 35px; color:white;", @class = "form-control", @type = "password", @readonly = "read-only" } })*@
+                                        <!--</div>
+                                    </div>-->
+                                    @*<div class="form-group row" style="margin-top: 15px; height: 40px;">
                                         <div class="col-sm-3" style=" text-align: right; ">
                                             <label style="padding-top: 4px; margin-bottom: 0; font-weight: 500; margin: 5px; color: white;">
                                                 NewPassword
@@ -125,16 +125,16 @@
                                         <div class="col-sm-9">
                                             <input name="txtRepassword" type="password" placeholder="Repassword..." style="width: 100%; height: 35px; color: white;" value="" class="form-control">
                                         </div>
-                                    </div>-->    
+                                    </div>*@
                                     <div style="margin-top: 15px; width: 100%;">
-                                    <p style="color: red; text-align: center;">@ViewBag.Message</p>
+                                        <p style="color: red; text-align: center;">@ViewBag.Message</p>
                                     </div>
                                     <div class="form-group" style="margin-top: 15px; height: 40px;">
-                                            <a class="nav-link" href="@Url.Action("ChangePass", "Users", new {id = Session["User_Id"].ToString() })">
-                                                    <i data-feather="edit"></i>
-                                                    <span class="link-title">Change Password</span>
-                                                </a>
-                                        </div>
+                                        <a class="nav-link" href="@Url.Action("ChangePass", "Users", new {id = Session["User_Id"].ToString() })">
+                                            <i data-feather="edit"></i>
+                                            <span class="link-title">Change Password</span>
+                                        </a>
+                                    </div>
 
                                     <div class="form-group row" style="margin-top: 15px; height: 40px; ">
                                         <input type="submit" value="Save" style="margin: auto; " class="btn btn-info">
