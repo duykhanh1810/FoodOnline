@@ -63,25 +63,33 @@ namespace FoodOnline.Controllers
         public ActionResult SignIn(string email, string password)
         {
             string passHash = GetMD5(password);
-            User check = db.Users.SingleOrDefault(u => u.Email == email && u.Password == passHash);
-            User wrongEmail = db.Users.SingleOrDefault(u => u.Email != email);
-            User wrongPass = db.Users.SingleOrDefault(u => u.Email == email && u.Password != passHash);
+            User check = db.Users.FirstOrDefault(u => u.Email == email && u.Password == passHash);
+            User wrongEmail = db.Users.FirstOrDefault(u => u.Email != email);
+            User wrongPass = db.Users.FirstOrDefault(u => u.Email == email && u.Password != passHash);
             //var check2 = from u in db.Users
-            //            join r in db.Roles on u.IdRole equals r.IdRole
-            //            where (u.Email == email && u.Password == passHash)
-            //            select new
-            //            {
-            //                EmailUser = u.Email,
-            //                IDUser = u.IdUser,
-            //                IDRole = u.IdRole,
-            //                Name = u.NameUser,
-            //                namerole = r.NameRole
-            //            };
-            if (check!= null) {
-                    Session["User"] = check;
-                    Session["Roles"] = check;
-                    Session["User_Id"] = check.IdUser;
-                    Session["Name"] = check.NameUser;                
+            //             join r in db.Roles on u.IdRole equals r.IdRole
+            //             where (u.Email == email && u.Password == passHash)
+            //             select new
+            //             {
+            //                 u,r,
+            //                 NameUs = u.NameUser,
+            //                 Rolesss = r.NameRole,
+            //                 idu = u.IdUser,
+            //             };
+            //if (check2 != null)
+            //{
+            //    Session["User"] = check2;
+            //    Session["Roles"] = check2.Select(x=>x.Rolesss);
+            //    Session["User_Id"] = check2.Select(x => x.idu).ToString();
+            //    Session["Name"] = check2.Select(x => x.NameUs);
+            //    return RedirectToAction("Index", "Home");
+            //}
+            if (check != null)
+            {
+                Session["User"] = check;
+                Session["Roles"] = check.Role.NameRole;
+                Session["User_Id"] = check.IdUser;
+                Session["Name"] = check.NameUser;
                 return RedirectToAction("Index", "Home");
             }
             else if(wrongEmail!= null)
