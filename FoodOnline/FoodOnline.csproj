@@ -213,6 +213,7 @@
     <Compile Include="Models\Product.cs">
       <DependentUpon>FoodApplication.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ResetPasswordModel.cs" />
     <Compile Include="Models\Role.cs">
       <DependentUpon>FoodApplication.tt</DependentUpon>
     </Compile>

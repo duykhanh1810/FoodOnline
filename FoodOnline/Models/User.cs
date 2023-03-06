@@ -28,12 +28,15 @@ namespace FoodOnline.Models
         public int IdUser { get; set; }
         public string NameUser { get; set; }
         public int IdRole { get; set; }
+        [Required]
+        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}")]
         public string Email { get; set; }
         public string Captcha { get; set; }
         public Nullable<bool> IsComfirm { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Img { get; set; }
+        [Required]
         public string Password { get; set; }
         public Nullable<bool> Status { get; set; }
         public string fg_otp { get; set; }

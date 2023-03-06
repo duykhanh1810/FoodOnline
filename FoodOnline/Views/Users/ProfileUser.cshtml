@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="set-bg" data-setbg="">
+<div class="set-bg" style="padding-top: 50px" data-setbg="">
     <div class="row mx-0">
         <div class="col-sm-8" style="width: 90%; margin: auto; border: 1px solid black; margin-top: 50px; margin-bottom: 50px; box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); border-radius: 5px;">
             <div class="no-title" style="height: 20px;"></div>
@@ -15,7 +15,7 @@
                     <br>
                     <div class="row">
                         <!--Profile left Begin-->
-                        <div class="col-sm-3 mgbt-xs-20">
+                        <div class="col-sm-5 mgbt-xs-20">
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <div class="form-img text-center mgbt-xs-15">
@@ -23,7 +23,7 @@
                                         {
                                             <img alt="example image"
                                                  src="@Url.Content("~/Images/" + Model.Img)"
-                                                 style="width: 100%; overflow: hidden; border-radius: 10px; height: 400px;">
+                                                 style="width: 300px; overflow: hidden; border-radius: 10px; height: 300px;">
                                         }
                                         else
                                         {
@@ -48,7 +48,7 @@
                         </div>
                         <!--Profile left End-->
 
-                        <div class="col-sm-9">
+                        <div class="col-sm-7">
                             <!--Account setting Begin-->
                             @using (Html.BeginForm("ProfileUser", "Users", FormMethod.Post, new { @class = "form-horizontal" }))
                             {
@@ -74,8 +74,7 @@
                                     <div class="form-group row" style="margin-top: 15px; height: 40px;">
                                         <div class="col-sm-3" style=" text-align: right; ">
                                             <label style="padding-top: 4px; margin-bottom: 0; font-weight: 500; margin: 5px; color: white;">
-                                                Phone
-                                                Number
+                                                Phone                                                
                                             </label>
                                         </div>
                                         <div class="col-sm-9">
@@ -132,12 +131,12 @@
                                     <div class="form-group" style="margin-top: 15px; height: 40px;">
                                         <a class="nav-link" href="@Url.Action("ChangePass", "Users", new {id = Session["User_Id"].ToString() })">
                                             <i data-feather="edit"></i>
-                                            <span class="link-title">Change Password</span>
+                                            <span class="link-title btn btn-outline-danger">Change Password</span>
                                         </a>
                                     </div>
 
                                     <div class="form-group row" style="margin-top: 15px; height: 40px; ">
-                                        <input type="submit" value="Save" style="margin: auto; " class="btn btn-info">
+                                        <input type="submit" value="Save" style="margin: auto; " class="btn btn-outline-info">
                                     </div>
                                 </div>
                                 <!--Profile setting End-->

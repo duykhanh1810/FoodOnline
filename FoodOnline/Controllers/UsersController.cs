@@ -109,9 +109,9 @@ namespace FoodOnline.Controllers
             //    return View();
             //}
             string urlBase = Request.Url.GetLeftPart(UriPartial.Authority) + Url.Content("~");
-            ViewBag.Email = "<div style=\"color:#fff\">\r\nAccess to Email to verify account: " + user.Email;
+            ViewBag.Email = "Access to Email to verify account: " + user.Email;
             SentMailForgotPass("Mã xác minh tài khoản", user.Email, "duykhanh18102002@gmail.com", "ytlipmoseyimohec", "Reset password bằng cách click vào link: "
-                + urlBase + "Users/ResetPassword/"+ID+"?fg_otp=" + user.fg_otp + "&email=" + user.Email + "</div>");
+                + urlBase + "Users/ResetPassword/"+ID+"?fg_otp=" + user.fg_otp + "&email=" + user.Email);
             return View();
         }
 
@@ -120,13 +120,13 @@ namespace FoodOnline.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult ResetPassword(int ID, string fgOtp, User user)
+        [HttpGet]
+        public ActionResult ResetPassword(int ID, string fgOtp)
         {
             User us = db.Users.SingleOrDefault(x => x.IdUser == ID && x.fg_otp == fgOtp);
             if (us != null)
             {
-                us.Password = GetMD5(user.Password);
+                us.Password = GetMD5(us.Password);
                 db.SaveChanges();
                 ViewBag.Message = "Reset Password successful";
                 return View();
@@ -249,7 +249,7 @@ namespace FoodOnline.Controllers
                 }
                 else
                 {
-                    ViewBag.Message = "New password match !!! Please check !!!";
+                    ViewBag.Message = "Confirm password not match !!! Please check !!!";
                 }
             }
             else

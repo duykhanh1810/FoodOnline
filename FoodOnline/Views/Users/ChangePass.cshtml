@@ -7,10 +7,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 
-<div class="row justify-content-md-center">
+<div class="row justify-content-md-center" style="padding-top: 70px">
     <div class="col-md-5">
         <h3 style="text-align:center">Welcome @Session["Name"]</h3>
-        <h3 style="text-align:center; color: white">Welcome @Session["Roles"]</h3>
+        @*<h3 style="text-align:center; color: white">Welcome @Session["Roles"]</h3>*@
 
         @using (Html.BeginForm("ChangePass", "Users", FormMethod.Post))
         {
@@ -18,25 +18,25 @@
             @Html.AntiForgeryToken()
     <div class="card">
         <div class="card-header">Change Password</div>
-        @ViewBag.Message
+        <p style="color:black; text-align:center">@ViewBag.Message</p>
         <div class="card-body">
             <div class="form-group pass_show">
                 @Html.Label("Current Password", new { @for = "Password" })  <br />
-                <input type="password" name="Password" class="form-control" placeholder="Current Password">
+                <input type="password" name="Password" class="form-control" placeholder="Current Password" required>
             </div>
             <div class="form-group pass_show">
                 @Html.Label("New Password", new { @for = "newPassword" }) <br />
-                <input type="password" name="newPassword" class="form-control" placeholder="New Password">
+                <input type="password" name="newPassword" class="form-control" placeholder="New Password" required>
             </div>
             <div class="form-group pass_show">
                 @Html.Label("Confirm Password", new { @for = "Confirmpwd" }) <br />
-                <input type="password" name="Confirmpwd" class="form-control" placeholder="Confirm Password">
+                <input type="password" name="Confirmpwd" class="form-control" placeholder="Confirm Password" required>
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-outline-dark" value="ChangePass" />
             </div>
             <div class="form-group">
-                <a href="@Url.Action("ProfileUser", "Users", new {userID = user.IdUser   })">Back to info</a>
+                <a href="@Url.Action("ProfileUser", "Users", new {userID = user.IdUser})">Back to info</a>
             </div>
         </div>
     </div>

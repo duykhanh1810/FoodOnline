@@ -22,6 +22,10 @@ namespace FoodOnline.Controllers
         {
             return View();
         }
+        public ActionResult About()
+        {
+            return View();
+        }
         public ActionResult SignUp()
         {
             return View();
@@ -126,6 +130,9 @@ namespace FoodOnline.Controllers
             try
             {
                 check.fg_otp = new Random().Next(100000, 999999).ToString();
+                Session["fg_Name"] = check.NameUser;
+                Session["fg_id"] = check.IdUser;
+                Session["fg_otp"] = check.fg_otp;
                 db.SaveChanges();
             }
             catch (DbEntityValidationException e)
@@ -147,8 +154,7 @@ namespace FoodOnline.Controllers
                 ViewBag.Message = "Failed to send email " + ex.Message;
                 return View();
             }
-            return RedirectToAction("ConfirmForgotPassword", "Users", new { ID = check.IdUser });
-
+            return RedirectToAction("ConfirmForgotPassword", "Users", new { ID = check.IdUser });           
         }
 
         public static string GetMD5(string str)
