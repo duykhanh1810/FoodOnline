@@ -33,12 +33,12 @@
                                         }
 
                                     </div>
-                                    @using (Html.BeginForm("UploadAvatar", "Users", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    @using (Html.BeginForm("UploadAvatar", "Users", FormMethod.Post, new { enctype = "multipart/form-data", @accept = "image/*" }))
                                     {
                                         @Html.HiddenFor(x => x.IdUser)
                                         <div class="form-img-action text-center mgbt-xs-20" style="margin-top: 10px;">
-                                            @Html.TextBox("file", "", new { type = "file", @style = "width: 100%;", @class = "vd_bg-blue" })
-                                            <input type="submit" class="btn btn-info" value="Upload" style="margin-top: 10px;" />
+                                            @Html.TextBox("file", "", new { type = "file", @style = "width: 100%;", @class = "vd_bg-blue",@accept = "image/*", @id = "file", @onchange = "return fileValidation()" })
+                                            <input type="submit" class="btn btn-info" value="Upload" style="margin-top: 10px;" id="fileName" onchange="validateFileType()" accept = "image/*" />
                                             @ViewBag.Message
                                         </div>
                                     }
@@ -162,5 +162,37 @@
         $(this).css('background-repeat', 'no-repeat');
         $(this).css('background-size', 'cover');
     });
+
+    function fileValidation() {
+        var fileInput =
+            document.getElementById('file');
+
+        var filePath = fileInput.value;
+
+        // Allowing file type
+        var allowedExtensions =
+            /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+        if (!allowedExtensions.exec(filePath)) {
+            alert('Invalid file type');
+            fileInput.value = '';
+            return false;
+        }
+        else {
+
+            // Image preview
+            if (fileInput.files && fileInput.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById(
+                        'imagePreview').innerHTML =
+                        '<img src="' + e.target.result
+                        + '"/>';
+                };
+
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        }
+    }
 </script>
 

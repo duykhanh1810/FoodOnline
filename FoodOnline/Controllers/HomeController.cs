@@ -70,24 +70,6 @@ namespace FoodOnline.Controllers
             User check = db.Users.FirstOrDefault(u => u.Email == email && u.Password == passHash);
             User wrongEmail = db.Users.FirstOrDefault(u => u.Email != email);
             User wrongPass = db.Users.FirstOrDefault(u => u.Email == email && u.Password != passHash);
-            //var check2 = from u in db.Users
-            //             join r in db.Roles on u.IdRole equals r.IdRole
-            //             where (u.Email == email && u.Password == passHash)
-            //             select new
-            //             {
-            //                 u,r,
-            //                 NameUs = u.NameUser,
-            //                 Rolesss = r.NameRole,
-            //                 idu = u.IdUser,
-            //             };
-            //if (check2 != null)
-            //{
-            //    Session["User"] = check2;
-            //    Session["Roles"] = check2.Select(x=>x.Rolesss);
-            //    Session["User_Id"] = check2.Select(x => x.idu).ToString();
-            //    Session["Name"] = check2.Select(x => x.NameUs);
-            //    return RedirectToAction("Index", "Home");
-            //}
             if (check != null)
             {
                 Session["User"] = check;
@@ -112,50 +94,7 @@ namespace FoodOnline.Controllers
             Session.Remove("User");
             return RedirectToAction("Index", "Home");
         }
-
-        public ActionResult ForgotPassword()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult ForgotPassword(User user)
-        {
-            User check = db.Users.SingleOrDefault(u => u.Email == user.Email);
-            if (check == null)
-            {
-                ViewBag.Message = "Email does not exist";
-                return View();
-            }
-            try
-            {
-                check.fg_otp = new Random().Next(100000, 999999).ToString();
-                Session["fg_Name"] = check.NameUser;
-                Session["fg_id"] = check.IdUser;
-                Session["fg_otp"] = check.fg_otp;
-                db.SaveChanges();
-            }
-            catch (DbEntityValidationException e)
-            {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Message = "Failed to send email " + ex.Message;
-                return View();
-            }
-            return RedirectToAction("ConfirmForgotPassword", "Users", new { ID = check.IdUser });           
-        }
+        
 
         public static string GetMD5(string str)
         {

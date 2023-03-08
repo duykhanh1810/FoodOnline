@@ -642,11 +642,11 @@
     <Content Include="Views\Users\ConfirmEmail.cshtml" />
     <Content Include="Views\Users\ConfirmEmailLink.cshtml" />
     <Content Include="Views\Home\SignIn.cshtml" />
-    <Content Include="Views\Home\ForgotPassword.cshtml" />
-    <Content Include="Views\Users\ConfirmForgotPassword.cshtml" />
-    <Content Include="Views\Users\ResetPassword.cshtml" />
     <Content Include="Views\Users\ProfileUser.cshtml" />
     <Content Include="Views\Users\ChangePass.cshtml" />
+    <Content Include="Views\Users\ForgotPassword.cshtml" />
+    <Content Include="Views\Users\ResetPassword.cshtml" />
+    <Content Include="Views\Shared\_ResetPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

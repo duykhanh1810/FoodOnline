@@ -52,23 +52,51 @@ namespace FoodOnline.Controllers
             smtp.Send(mail);
         }
 
-        public void SentMailForgotPass(string title, string ToEmail, string FromEmail, string password, string content)
+        [NonAction]
+        public void SendVerificationLinkEmail(string emailID, string activationCode, string emailFor = "VerifyAccount")
         {
-            //string passHash = GetMD5(password);
-            MailMessage mail = new MailMessage();
-            mail.To.Add(ToEmail);
-            mail.From = new MailAddress(ToEmail);
-            mail.Subject = title;
-            mail.Body = content;
-            mail.IsBodyHtml = true;
+            var verifyUrl = "/Users/" + emailFor + "/" + activationCode;
+            var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, verifyUrl);
 
-            SmtpClient smtp = new SmtpClient();
-            smtp.Host = "smtp.gmail.com";
-            smtp.Port = 587;
-            smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new NetworkCredential(FromEmail, password);
-            smtp.EnableSsl = true;
-            smtp.Send(mail);
+            var fromEmail = new MailAddress("duykhanh18102002@gmail.com", "Dotnet Awesome");
+            var toEmail = new MailAddress(emailID);
+            var fromEmailPassword = "ytlipmoseyimohec"; // Replace with actual password
+
+            string subject = "";
+            string body = "";
+            if (emailFor == "VerifyAccount")
+            {
+                subject = "Your account is successfully created!";
+                body = "<br/><br/>We are excited to tell you that your Dotnet Awesome account is" +
+                    " successfully created. Please click on the below link to verify your account" +
+                    " <br/><br/><a href='" + link + "'>" + link + "</a> ";
+
+            }
+            else if (emailFor == "ResetPassword")
+            {
+                subject = "Reset Password";
+                body = "Hi,<br/>br/>We got request for reset your account password. Please click on the below link to reset your password" +
+                    "<br/><br/><a href=" + link + ">Reset Password link</a>";
+            }
+
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
+            };
+
+            using (var message = new MailMessage(fromEmail, toEmail)
+            {
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true
+            })
+                smtp.Send(message);
         }
 
         [HttpGet]
@@ -99,40 +127,95 @@ namespace FoodOnline.Controllers
             return View();
         }
 
-        [HttpGet]
-        public ActionResult ConfirmForgotPassword(int ID)
-        {
-            User user = db.Users.SingleOrDefault(u => u.IdUser == ID);
-            //if (user.fg_otp.Length>0)
-            //{
-            //    ViewBag.Message = "Email Confirmed";
-            //    return View();
-            //}
-            string urlBase = Request.Url.GetLeftPart(UriPartial.Authority) + Url.Content("~");
-            ViewBag.Email = "Access to Email to verify account: " + user.Email;
-            SentMailForgotPass("Mã xác minh tài khoản", user.Email, "duykhanh18102002@gmail.com", "ytlipmoseyimohec", "Reset password bằng cách click vào link: "
-                + urlBase + "Users/ResetPassword/"+ID+"?fg_otp=" + user.fg_otp + "&email=" + user.Email);
-            return View();
-        }
-
-        public ActionResult ResetPassword()
+        public ActionResult ForgotPassword()
         {
             return View();
         }
 
-        [HttpGet]
-        public ActionResult ResetPassword(int ID, string fgOtp)
+        [HttpPost]
+        public ActionResult ForgotPassword(string EmailID)
         {
-            User us = db.Users.SingleOrDefault(x => x.IdUser == ID && x.fg_otp == fgOtp);
-            if (us != null)
+            //Verify Email ID
+            //Generate Reset password link 
+            //Send Email 
+            string message = "";
+            bool status = false;
+
+            using (FoodOrdersOnlineEntities dc = new FoodOrdersOnlineEntities())
             {
-                us.Password = GetMD5(us.Password);
-                db.SaveChanges();
-                ViewBag.Message = "Reset Password successful";
-                return View();
+                var account = dc.Users.Where(a => a.Email == EmailID).FirstOrDefault();
+                if (account != null)
+                {
+                    //Send email for reset password
+                    string resetCode = new Random().Next(100000, 999999).ToString();
+                    SendVerificationLinkEmail(account.Email, resetCode, "ResetPassword");
+                    account.fg_otp = resetCode;
+                    //This line I have added here to avoid confirm password not match issue , as we had added a confirm password property 
+                    //in our model class in part 1
+                    dc.Configuration.ValidateOnSaveEnabled = false;
+                    dc.SaveChanges();
+                    message = "Reset password link has been sent to your email id.";
+                }
+                else
+                {
+                    message = "Account not found";
+                }
             }
-            ViewBag.Message = "\r\nReset Password failed";
+            ViewBag.Message = message;
             return View();
+        }
+        public ActionResult ResetPassword(string id)
+        {
+            //Verify the reset password link
+            //Find account associated with this link
+            //redirect to reset password page
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return HttpNotFound();
+            }
+
+            using (FoodOrdersOnlineEntities dc = new FoodOrdersOnlineEntities())
+            {
+                var user = dc.Users.Where(a => a.fg_otp == id).FirstOrDefault();
+                if (user != null)
+                {
+                    ResetPasswordModel model = new ResetPasswordModel();
+                    model.ResetCode = id;
+                    return View(model);
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetPassword(ResetPasswordModel model)
+        {
+            var message = "";
+            if (ModelState.IsValid)
+            {
+                using (FoodOrdersOnlineEntities dc = new FoodOrdersOnlineEntities())
+                {
+                    var user = dc.Users.Where(a => a.fg_otp == model.ResetCode).FirstOrDefault();
+                    if (user != null)
+                    {
+                        user.Password = GetMD5(model.NewPassword);
+                        user.fg_otp = "";
+                        dc.Configuration.ValidateOnSaveEnabled = false;
+                        dc.SaveChanges();
+                        message = "New password updated successfully";
+                    }
+                }
+            }
+            else
+            {
+                message = "Something invalid";
+            }
+            ViewBag.Message = message;
+            return View(model);
         }
 
 
@@ -163,35 +246,7 @@ namespace FoodOnline.Controllers
             updateUser.Phone = user.Phone;
             //updateUser.Password = passHash;
             db.SaveChanges();
-            return RedirectToAction("ProfileUser", new { userID = updateUser.IdUser });
-            //if (passHash == updateUser.Password)
-            //{
-            //    if (form["txtRepassword"] == null || form["txtRepassword"] == "")
-            //    {
-            //        ViewBag.Message = "Update success";
-            //        return View(user);
-            //    }
-            //    else
-            //    {
-            //        ViewBag.Message = "Do not input comfirm password if you do not change password";
-            //        return View(user);
-            //    }
-            //}
-            //else
-            //{
-            //    if (user.Password == form["txtRepassword"])
-            //    {
-            //        updateUser.Password = GetMD5(user.Password);
-            //        db.SaveChanges();
-            //        ViewBag.Message = "Update success";
-            //        return View(user);
-            //    }
-            //    else
-            //    {
-            //        ViewBag.Message = "Password and Confirm Password are not match";
-            //        return View(user);
-            //    }
-            //}
+            return RedirectToAction("ProfileUser", new { userID = updateUser.IdUser });            
         }
 
         [HttpPost]
@@ -241,7 +296,6 @@ namespace FoodOnline.Controllers
             {
                 if (Confirmpwd == newPassword)
                 {
-                    //login.ConfirmPassword = GetMD5(Confirmpwd);
                     login.Password = GetMD5(newPassword);
                     var str = GetMD5(newPassword);
                     db.SaveChanges();
